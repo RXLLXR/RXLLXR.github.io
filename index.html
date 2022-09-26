@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+		body{
+			 /*background-image: url(../image/8.jpeg) ;*/
+			background-size: 100% 100%;
+			/*background-size: no-repeat;*/
+			 /*background-color: cornflowerblue; */
+			background-color: rgb(13,30,78);
+			margin:0px;
+			
+			width:100%;
+			
+			min-width:1500px;
+			
+			max-width:100%;
+			
+			height:100%;
+		}
+        .ppp{
+            width: 1460px;
+            height: 30px;
+            padding-top: 15px;
+			padding-bottom: 15px;
+			/* background-color: cornflowerblue; */
+			color: white;
+			text-align: center;
+			font-size: 30px;
+			margin: 10px auto;      /*上下10px,左右自动居中*/
+        }
+       .demo{
+		   margin: 10px auto;
+           border: 2px solid rgb(0,114,254);
+		   /* background-color: cornflowerblue; */
+		   padding: 10px;
+       }
+       .demo01{
+           float: left;
+		   padding-left: 10px;
+       }
+        .demo02{
+            float: left;
+			padding-left: 10px;
+        }
+        .demo03{	
+            float: left;
+			padding-left: 10px;
+        }
+       #demoChart{
+           float: left;
+       }
+       #demoChart1{
+           float: left;
+       }
+       #demoChart2{
+           float: left;
+       }
+       #demoChart3{
+           float: left;
+       }
+       #demoChart4{
+           float: left;
+		   margin-left: 20px;
+       }
+        #demoChart5{
+            float: left;
+        }
+        #demoChart6{
+            float: left;
+        }
+        #demoChart7{
+            float: left;
+			padding-left: 30px;
+        }
+        #demoChart8{
+            float: left;
+			padding-left: 30px;
+        }
+        #demoChart9{
+            float: left;
+        }
+        #demoChart10{
+            float: left;
+			padding-left: 5px;
+        }
+		table{
+			color: white;
+		}
+		table{
+		
+		border-collapse : collapse;
+		
+		border-spacing : 0;
+		
+		text-align: center;
+		
+		}
+		
+		tr,td{
+		
+		border-collapse:collapse;
+		
+		padding : 0;
+		
+		border : 1;}
+		
+		#title{
+			font-size: 17.5px;
+			/* padding-bottom: 32px; */
+			padding-left: 5px;
+			margin-bottom: 32px;
+			width: 320px;
+			height: 27px;
+			background: linear-gradient(to right,rgba(0,106,255,0.5),rgba(103,64,255,0.1));
+		}
+		.container{
+            display: flex;
+            flex-direction: row;
+        }
+
+    </style>
+</head>
+<body>
+<div class="ppp"><strong>云计算服务监控</strong></div>
+
+<div class="demo" style="width: 1450px;height: 840px;">
+    <div class="container">
+    <div class="container1" id="demoChart" style="width:350px; height: 300px; flex-grow: 1"></div>
+    <div class="container1" id="demoChart1" style="width:750px; height: 300px; flex-grow: 2"></div>
+    <div class="container1" id="demoChart2" style="width:380px; height: 300px; flex-grow: 1"></div>
+    </div>
+
+    <div class="demo01" style="width:355px;height:510px;">
+        <div id="demoChart3" style="width:160px; height: 250px;"></div>
+        <div id="demoChart4" style="width:160px; height: 250px;"></div>
+        <div id="demoChart5" style="width:350px; height: 280px;"></div>
+    </div>
+
+    <div class="demo02" style="width:700px;height:510px;">
+        <div id="demoChart6" style="width:320px; height: 500px;">
+            <div id="title" style="color: white;"><strong>任务管理</strong></div>
+			<!-- 表单 -->
+            <table border="1" style=" width:320px; height: 440px; border: rgb(0,106,255);">
+                <tr>
+                    <th>类型</th>
+                    <th>已应用</th>
+                </tr>
+                <tr>
+                    <td>MYSQLXXXX001</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>MYSQLXXXX013</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>MONGODB014</td>
+                    <td>30</td>
+                </tr>
+                <tr>
+                    <td>REDIS023</td>
+                    <td>10</td>
+                </tr>
+                <tr>
+                    <td>MYSQLXXXX025</td>
+                    <td>92</td>
+                </tr>
+                <tr>
+                    <td>MONGODB026</td>
+                    <td>46</td>
+                </tr>
+                <tr>
+                    <td>MYSQLXXXX029</td>
+                    <td>35</td>
+                </tr>
+                <tr>
+                    <td>REDIS031</td>
+                    <td>26</td>
+                </tr>
+            </table>
+        </div>
+        <div id="demoChart7" style="width:340px; height: 250px;"></div>
+        <div id="demoChart8" style="width:340px; height: 250px;"></div>
+    </div>
+
+    <div class="demo03" style="width:350px;height:510px;">
+        <div id="demoChart9" style="width:340px; height: 250px;"></div>
+        <div id="demoChart10" style="width:340px; height: 250px;"></div>
+    </div>
+</div>
+
+<script src="./echarts.js"></script>
+<script>
+    // 初始化图表
+    let demoObj = document.getElementById("demoChart")
+    let demoChart = echarts.init(demoObj)
+    // 配置图表
+    let option = {
+        title:{
+            text:"任务总量                                         ",
+			left:7,
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white",  //给标题改颜色
+			}
+        },
+		//鼠标移动到柱体上时显示数据
+		tooltip: {
+		    trigger: 'axis',
+		    axisPointer: {
+		        type: 'shadow'
+				
+		    }
+		},
+        xAxis: {
+            type: "category",
+            data: ["2016-Q4","2017-Q1","2017-Q2","2017-Q3"],
+			boundaryGap:false,
+			axisLabel:{
+				textStyle:{
+					color:'white'		//改变x轴文字的颜色
+				}
+			},
+			//给x轴改颜色
+			axisLine:{
+				lineStyle:{
+					color:'rgb(23,41,87)'
+				}
+			},
+			//去掉轴上的小点（默认）
+			axisTick:{
+				show:false
+			}
+        },
+		grid: {
+		    left: '0%',
+		    right: '13%',
+		    bottom: '17%',
+		    containLabel: true  //坐标轴的位置
+		},
+        yAxis: {
+            type: "value",
+			//给y轴上的数据改颜色
+			axisLine:{
+				lineStyle:{
+					color:'white'
+				}
+			},
+			splitLine: {
+				lineStyle: {
+					color: 'rgb(23,41,87)',		//改变多线的颜色
+			        //type:'dashed'虚线
+					}
+					}
+        },
+        series: [
+            {
+                type: "line",
+				lineStyle:{
+					color:'rgb(0,225,243)'
+				},
+                data: [1400,500,1800,700],
+                smooth:true,  //由曲变折
+                symbol:"none",  //去掉折线的小点
+				/* areaStyle针对折线包含的范围 */
+				areaStyle: {
+						// 设置范围的渐变
+				        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+				          {
+				            offset: 0,   //从0开始
+				            color: 'rgba(0,225,243,0.3)'
+				          },
+				          {
+				            offset: 1,   //到1结束
+				            color: 'rgba(13,34,83,1)'
+				          }
+				        ])
+				      }
+            },
+            {
+                type: "line",
+				lineStyle:{
+					color:'rgb(0,112,255)'   //设置线的颜色
+				},
+                data: [800,1300,100,1250],
+                smooth:true,
+                symbol:"none",
+				areaStyle: {
+				        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+				          {
+				            offset: 0,
+				            color: 'rgba(0,112,255,0.3)'
+				          },
+				          {
+				            offset: 1,
+				            color: 'rgba(13,34,83,1)'
+				          }
+				        ])
+				      }
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart.setOption(option)
+</script>
+<script>
+        // 初始化图表
+        let demoObj1 = document.getElementById("demoChart1")
+        let demoChart1 = echarts.init(demoObj1)
+        // 配置图表
+        let option1 = {
+            title:{
+                text:"云计算任务趋势                                                                                                 ",
+				left:22,
+				backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+					  {
+					    offset: 0,
+					    color: 'rgba(0,106,255,0.5)'
+					  },
+					  {
+					    offset: 1,
+					    color: 'rgba(103,64,255,0.1)'
+					  }
+					]),
+				textStyle:{
+					//改变标题颜色
+					color:"white"
+				}
+            },
+			//鼠标移动到柱体上时显示数据
+			tooltip: {
+			    trigger: 'axis',
+			    axisPointer: {
+			        type: 'shadow'
+					
+			    }
+			},
+            xAxis: {
+				axisLine:{
+								lineStyle:{
+									color:'rgb(23,41,87)'
+								}
+							},
+				axisLabel:{
+								textStyle:{
+									color:'white'
+								}
+							},
+				axisTick:{
+					show:false
+				},
+                type: "category",
+                data: ["01/01","02/01","03/01","04/01","05/01","06/01","07/01","08/01","09/01","10/01","11/01"]
+            },
+            yAxis: {
+				axisLine:{
+					lineStyle:{
+						color:'white'
+					}
+				},
+				splitLine: {
+								lineStyle: {
+									color: 'rgb(23,41,87)',
+							        //type:'dashed'虚线
+									}
+									},
+                type: "value",
+                data:[0,500,1000,1500,2000]
+            },
+            series: [
+                {
+                    type: "bar",
+					barWidth:10,		//设置柱图宽度
+                    data: [900,800,1800,2900,1200,1100,1900,1700,2000,2300,1000],
+                    smooth:true,
+					// itemStyle针对柱状
+					itemStyle:{
+						normal:{
+							
+							//设置柱形圆角【左上，右上，左下，右下】
+							barBorderRadius:[20,20,0,0],
+							color: new echarts.graphic.LinearGradient(0,1,0,0,[
+						{
+							offset:1,
+							color:'rgb(3,186,212)'
+						},
+						{
+							offset:0,
+							color:'rgb(0,141,243)'
+						}
+						])
+						
+						},
+						
+					}
+                },
+                {
+                    type: "line",
+                    data: [1700,1600,2600,3600,1900,1800,2700,2200,2700,3100,2800],
+                    smooth:false,
+                    symbol:"none",
+					lineStyle:{
+						color: new echarts.graphic.LinearGradient(0,1,0,0,[
+						{
+							offset:1,
+							color:'rgb(3,186,212)'
+						},
+						{
+							offset:0,
+							color:'rgb(0,141,243)'
+						}
+						])
+					}
+                }
+            ]
+        }
+        // 渲染图标
+        demoChart1.setOption(option1)
+    </script>
+<script>
+    // 初始化图表
+    let demoObj2 = document.getElementById("demoChart2")
+    let demoChart2 = echarts.init(demoObj2)
+    // 配置图表
+    let option2 = {
+        title:{
+            text:"任务总量                                              ",
+			left:10,
+			// right:45,
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white"
+			}
+        },
+		//鼠标移动到柱体上时显示数据
+		tooltip: {
+		    trigger: 'axis',
+		    axisPointer: {
+		        type: 'shadow'
+				
+		    }
+		},
+        xAxis: {
+			boundaryGap:false,
+			axisLine:{
+							lineStyle:{
+								color:'rgb(23,41,87)'
+							}
+						},
+			
+			axisLabel:{
+							textStyle:{
+								color:'white'
+							}
+						},
+			axisTick:{
+				show:false
+			},
+            type: "category",
+            data: ["Z1","Z2","Z3","Z4","Z5","Z6"]
+        },
+        yAxis: {
+			axisLine:{
+				lineStyle:{
+					color:'white'
+				}
+			},
+			splitLine: {
+							lineStyle: {
+								color: 'rgb(23,41,87)',
+						        //type:'dashed'虚线
+								}
+								},
+            type: "value",
+        },
+        series: [
+            {
+                type: "line",
+                data: [40,19,60,22,41,39],
+				symbol:'circle',
+				symbolSize:10,
+				// lineStyle针对折线本身
+				lineStyle:{
+					color: new echarts.graphic.LinearGradient(0,0,1,0,[
+					{
+						offset:0,
+						color:'rgb(2,103,244)'
+					},
+					{
+						offset:1,
+						color:'rgb(0,210,230)'
+					}
+					])
+				},
+				itemStyle:{
+					normal:{
+						color: new echarts.graphic.LinearGradient(0,0,1,0,[
+					{
+						offset:0,
+						color:'rgb(2,103,244)'
+					},
+					{
+						offset:1,
+						color:'rgb(0,210,230)'
+					}
+					])
+					}
+				},
+				areaStyle: {
+				        color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [
+				          /* {
+				            offset: 0,
+				            color: 'rgba(0,225,243,0.8)'
+				          }, */
+				          {
+				            offset: 1,
+				            color: 'rgba(0, 170, 255, 0.3)'
+				          }
+				        ])
+				      }
+            },
+            {
+                type: "line",
+                data: [56,60,39,83,60,46],
+				symbol:'circle',
+				symbolSize:10,
+				lineStyle:{
+					color: new echarts.graphic.LinearGradient(0,0,1,0,[
+					{
+						offset:0,
+						color:'rgb(107,62,255)'
+					},
+					{
+						offset:1,
+						color:'rgb(19,99,255)'
+					}
+					])
+				},
+				itemStyle:{
+					//让折线点渐变
+					normal:{
+						color: new echarts.graphic.LinearGradient(0,0,1,0,[
+					{
+						offset:0,
+						color:'rgb(107,62,255)'
+					},
+					{
+						offset:1,
+						color:'rgb(19,99,255)'
+					}
+					])
+					}
+				},
+				areaStyle: {
+				        color: new echarts.graphic.LinearGradient(1, 0, 0, 0, [
+				          /* {
+				            offset: 0,
+				            color: 'rgba(0,225,243,0.8)'
+				          }, */
+				          {
+				            offset: 1,
+				            color: 'rgba(58,77,233,0.3)'
+				          }
+				        ])
+				      }
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart2.setOption(option2)
+</script>
+<script>
+    // 初始化图表
+    let demoObj3 = document.getElementById("demoChart3")
+    let demoChart3 = echarts.init(demoObj3)
+    // 配置图表
+    let option3 = {
+		backgroundColor:'rgb(13,30,78)',
+        title: {
+            text: '任务分布           ',
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white"
+			}
+        },
+        // legend: {
+        //     data: ['Blue', 'Orange']
+        // },
+        radar: {
+			splitArea:{
+				show:true,
+				//设置雷达图背景颜色
+				areaStyle:{
+					color:'rgb(13,30,78)'
+				}
+			},
+			splitNumber:2,		//设置雷达图的圈数
+            // shape: 'circle',  //将雷达的形状改成圆形
+            indicator: [
+                { name: 'A', max: 500, color:'white' },
+                { name: 'F', max: 500, color:'white' },
+                { name: 'E', max: 500, color:'white' },
+                { name: 'D', max: 500, color:'white' },
+                { name: 'C', max: 500, color:'white' },
+                { name: 'B', max: 500, color:'white' }
+            ] ,
+			axisLine: {
+			        lineStyle: {
+			          color: 'rgb(68,80,116)'		//设置网格射线的颜色
+			        }
+			      },
+			splitLine: {
+			                //show: true,
+			                lineStyle: {
+			                    width: 1,
+			                    color: 'rgb(68,80,116)' // 图表背景网格线的颜色
+			                }
+			            }
+        },
+        series: [
+            {
+                //name: 'Budget vs spending',
+                type: 'radar',   //雷达
+                symbol:"none",
+                data: [
+                    {
+                        value: [350,350,300,400,350,350],
+                        name: 'Blue',
+						lineStyle:{
+							color: new echarts.graphic.LinearGradient(0,1,0,0,[
+							{
+								offset:1,
+								color:'rgb(0,200,242)'
+							},
+							{
+								offset:0,
+								color:'rgb(0,114,254)'
+							}
+							])
+						}
+                    },
+                    {
+                        value: [100,230,150,200,200,250],
+                        name: 'Orange',
+						lineStyle:{
+							color: new echarts.graphic.LinearGradient(0,1,0,0,[
+							{
+								offset:1,
+								color:'rgb(216,95,54)'
+							},
+							{
+								offset:0,
+								color:'rgb(252,194,95)'
+							}
+							])
+						}
+                    }
+                ]
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart3.setOption(option3)
+</script>
+<script>
+    // 初始化图表
+    let demoObj4 = document.getElementById("demoChart4")
+    let demoChart4 = echarts.init(demoObj4)
+    // 配置图表
+    const gaugeData = [
+        {
+            value: 65,  //在仪表盘中间显示的数值
+            detail: {
+                valueAnimation: true,   //让数值呈动态变化
+                offsetCenter: ['0%', '0%']  //设置数值所在的坐标位置
+            }
+			
+        }
+        ]
+    let option4 = {
+        title: {
+            text: '任务成功           ',
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white"
+			}
+        },
+        series: [
+            {
+				
+                type: 'gauge',
+				//改变仪表盘背景颜色
+				axisLine:{
+					lineStyle:{
+						color:[[1,'rgb(56,71,111)']]
+					}
+				},
+                startAngle: 90,  //表示进度从90度角开始
+                endAngle: -270,  //表示进度从-270度角结束
+                pointer: {
+                    show: false
+                },
+                progress: {
+                    show: true,
+                    overlap: false,
+                    roundCap: true,
+                    clip: false,
+                    // itemStyle: {
+                    //     borderWidth: 1,
+                    //     borderColor: 'rgb(90,121,214)'
+                    // }
+                },
+                itemStyle: {
+					color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+					  {
+					    offset: 0,
+					    color: 'rgb(0,106,255)'
+					  },
+					  {
+					    offset: 1,
+					    color: 'rgb(103,64,255)'
+					  }
+					])
+				},
+                splitLine: {
+                    show: false,  //让仪表盘的刻度消失
+                    //distance: 1,  //刻度距离表盘的距离
+                    //length: 20		//刻度的长度
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false,	//显示刻度数值
+                    distance: 50	//刻度数值距离表盘的距离
+                },
+                data: gaugeData,
+                // title: {
+                //     fontSize: 14
+                // },
+                detail: {
+                    fontSize: 25,		//设置数值的大小
+                    color: 'white',		//设置数值的颜色
+                    borderColor: 'auto',
+                    borderRadius: 10,
+                    //borderWidth: 1,	//进度条的边框
+                    formatter: '{value}%'
+                }
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart4.setOption(option4)
+</script>
+<script>
+    // 初始化图表
+    let demoObj5 = document.getElementById("demoChart5")
+    let demoChart5 = echarts.init(demoObj5)
+    // 配置图表
+    let option5 = {
+        title:{
+            text:"任务完成率                                         ",
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white"
+			}
+        },
+		//鼠标移动到柱体上时显示数据
+		tooltip: {
+		    trigger: 'axis',
+		    axisPointer: {
+		        type: 'shadow'
+				
+		    }
+		},
+        xAxis: {
+			boundaryGap:false,
+			axisLine:{
+							lineStyle:{
+								color:'rgb(23,41,87)'
+							}
+						},
+			
+			axisLabel:{
+							textStyle:{
+								color:'white'
+							}
+						},
+			axisTick:{
+				show:false
+			},
+            type: "category",
+            data: ["A1","A2","A3","A4","A5","A6","A7","A8"]
+        },
+		grid: {
+		    left: '0%',
+		    right: '9%',
+		    bottom: '10%',
+		    containLabel: true  //坐标轴的位置
+		},
+        yAxis: {
+			axisLine:{
+				lineStyle:{
+					color:'white'
+				}
+			},
+			splitLine: {
+							lineStyle: {
+								color: 'rgb(23,41,87)',
+						        //type:'dashed'虚线
+								}
+								},
+            type: "value",
+        },
+        series: [
+            {
+                type: "line",
+                stack: 'Total',
+                symbol:'none',
+				lineStyle:{
+					//color:'rgb(36,82,218)'
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgb(0,106,255)'
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgb(103,64,255)'
+                        }
+                    ])
+				},
+				// itemStyle:{
+				// 	//设置折线点的颜色
+				// 	normal:{
+				// 		color:'rgb(36,82,218)'
+				// 	}
+				// },
+                data: [19,18,32,30,45,51,79,77],
+				areaStyle: {
+                    opacity: 1,
+				        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+				          {
+                              offset: 0,
+                              color: 'rgb(0,106,255)'
+				          },
+				          {
+                              offset: 1,
+                              color: 'rgb(103,64,255)'
+				          }
+				        ])
+				      }
+            },
+            {
+                type: "line",
+                stack: 'Total',
+                symbol:'none',
+				lineStyle:{
+					// color:'rgb(70,48,184)'
+                    color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+                        {
+                            offset: 0,
+                            color: 'rgb(0,106,255)',
+                            // color: 'rgb(20,70,184)',
+                        },
+                        {
+                            offset: 1,
+                            color: 'rgb(0,199,221)',
+                            // color: 'rgb(70,48,184,1)'
+                        }
+                    ])
+				},
+				// itemStyle:{
+				// 	normal:{
+				// 		color:'rgb(70,48,184)'
+				// 	}
+				// },
+                data: [38,42,39,55,79,78,92,82],
+				areaStyle: {
+                    opacity: 1,
+				        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+				          {
+                              offset: 0,
+                              color: 'rgb(0,106,255)',
+                              // color: 'rgb(20,70,184)',
+				          },
+				          {
+                              offset: 1,
+                              color: 'rgb(0,199,221)',
+				            // color: 'rgb(70,48,184,1)'
+				          }
+				        ])
+				      }
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart5.setOption(option5)
+</script>
+<script>
+    // 初始化图表
+    let demoObj7 = document.getElementById("demoChart7")
+    let demoChart7 = echarts.init(demoObj7)
+    // 配置图表
+    let option7 = {
+        title:{
+            text:"平均容量                                              ",
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white"
+			}
+        },
+		//鼠标移动到柱体上时显示数据
+		tooltip: {
+		    trigger: 'axis',
+		    axisPointer: {
+		        type: 'shadow'
+				
+		    }
+		},
+        xAxis: {
+			axisLine:{
+							lineStyle:{
+								color:'rgb(23,41,87)'
+							}
+						},
+			
+			axisLabel:{
+							textStyle:{
+								color:'white'
+							}
+						},
+			axisTick:{
+				show:false
+			},
+            type: "category",
+            data: ["02/03","02/04","02/05","02/06","02/07"]
+        },
+		grid: {
+		    left: '0%',
+		    right: '4%',
+		    bottom: '10%',
+		    containLabel: true  //坐标轴的位置
+		},
+        yAxis: {
+			axisLine:{
+				lineStyle:{
+					color:'white'
+				}
+			},
+			splitLine: {
+							lineStyle: {
+								color: 'rgb(23,41,87)',
+						        //type:'dashed'虚线
+								}
+								},
+            type: "value",
+        },
+        series: [
+            {
+                type: "bar",
+				barWidth:10,
+                data: [600,750,1300,700,700],
+				//设置柱体的颜色
+				itemStyle:{
+					color:'rgb(0,106,255)'
+				}
+            },
+            {
+                type: "bar",
+				barWidth:10,
+                data: [1100,350,500,900,750],
+				itemStyle:{
+					color:'rgb(0,199,221)'
+				}
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart7.setOption(option7)
+</script>
+<script>
+    // 初始化图表
+    let demoObj8 = document.getElementById("demoChart8")
+    let demoChart8 = echarts.init(demoObj8)
+    // 配置图表
+    let option8 = {
+        title: {
+            text: '存储容量                                              ',
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white"
+			}
+        },
+		//鼠标移动到柱体上时显示数据
+		tooltip: {
+		    trigger: 'axis',
+		    axisPointer: {
+		        type: 'shadow'
+				
+		    }
+		},
+		//设置各刻度线间的间距
+        grid: {
+            left: '0%',
+            right: '4%',
+            bottom: '0%',
+            containLabel: true  //坐标轴的位置
+        },
+        xAxis: {
+			axisLine:{
+				lineStyle:{
+					color:'white'
+				}
+			},
+			splitLine: {
+							lineStyle: {
+								color: 'rgb(23,41,87)',
+						        //type:'dashed'虚线
+								}
+								},
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+			axisLine:{
+							lineStyle:{
+								color:'rgb(23,41,87)'
+							}
+						},
+			
+			axisLabel:{
+							textStyle:{
+								color:'white'
+							}
+						},
+			axisTick:{
+				show:false
+			},
+            type: 'category',
+            data: ['A','B','C','D','E']
+        },
+        series: [
+            {
+                type: 'bar',
+				barWidth:10,
+                data: [16,42,118,78,38],
+				itemStyle:{
+					color: new echarts.graphic.LinearGradient(1,0,0,0,[
+					{
+						offset:1,
+						color:'rgb(0,141,243)'
+					},
+					{
+						offset:0,
+						color:'rgb(3,186,212)'
+					}
+					])
+				}
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart8.setOption(option8)
+</script>
+<script>
+    // 初始化图表
+    let demoObj9 = document.getElementById("demoChart9")
+    let demoChart9 = echarts.init(demoObj9)
+    // 配置图表
+    const gaugeData9 = [
+        {
+            value: 80,
+            detail: {
+                valueAnimation: true,
+                offsetCenter: ['0%', '0%']
+            }
+        }
+    ]
+    let option9 = {
+        title: {
+            text: 'CPU利用率                                            ',
+			left:5,
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white"
+			}
+        },
+        series: [
+            {
+				
+				center:["50%","55%"],
+                type: 'gauge',
+				//改变仪表盘背景颜色
+                startAngle: 90,
+                endAngle: -270,
+                pointer: {
+                    show: false
+                },
+				//设置进度条
+                progress: {
+                    show: true,		//显示进度条
+                    overlap: false, //让进度条铺满整个进度可能空间
+                    roundCap: true,	//给进度条加个帽子
+                    clip: true,
+                    /* itemStyle: {
+                        borderWidth: 1,
+                        borderColor: 'rgb(90,121,214)'
+                    } */
+					itemStyle: {
+						color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+						  {
+						    offset: 0,
+						    color: 'rgb(0,106,255)'
+						  },
+						  {
+						    offset: 1,
+						    color: 'rgb(103,64,255)'
+						  }
+						])
+					}
+                },
+                axisLine: {
+                    lineStyle: {
+                        width: 20,
+						color:[[1,'rgb(58,68,104)']]
+                    }
+                },
+                splitLine: {
+                    show: false,
+                    distance: 0,
+                    length: 10
+                },
+                axisTick: {
+                    show: false
+                },
+                axisLabel: {
+                    show: false,
+                    distance: 50
+                },
+                data: gaugeData9,
+                title: {
+                    fontSize: 14
+                },
+                detail: {
+                    fontSize: 25,
+                    color: 'white',
+                    borderColor: 'auto',
+                    borderRadius: 10,
+                    //borderWidth: 1,
+                    formatter: '{value}%'
+                }
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart9.setOption(option9)
+</script>
+<script>
+    // 初始化图表
+    let demoObj10 = document.getElementById("demoChart10")
+    let demoChart10 = echarts.init(demoObj10)
+    // 配置图表
+    let option10 = {
+        title:{
+            text:"内存利用率                                            ",
+			
+			backgroundColor:new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+				  {
+				    offset: 0,
+				    color: 'rgba(0,106,255,0.5)'
+				  },
+				  {
+				    offset: 1,
+				    color: 'rgba(103,64,255,0.1)'
+				  }
+				]),
+			textStyle:{
+				color:"white"
+			}
+        },
+		//鼠标移动到柱体上时显示数据
+		tooltip: {
+		    trigger: 'axis',
+		    axisPointer: {
+		        type: 'shadow'
+				
+		    }
+		},
+        xAxis: {
+			boundaryGap:false,
+			axisLine:{
+							lineStyle:{
+								color:'rgb(23,41,87)'
+							}
+						},
+			
+			axisLabel:{
+							textStyle:{
+								color:'white'
+							}
+						},
+			axisTick:{
+				show:false
+			},
+            type: "category",
+            data: ["2016-Q4","2017-Q1","2017-Q2","2017-Q3"]
+        },
+		grid: {
+		    left: '0%',
+		    right: '8%',
+		    bottom: '0%',
+		    containLabel: true  //坐标轴的位置
+		},
+        yAxis: {
+			axisLine:{
+				lineStyle:{
+					color:'white'
+				}
+			},
+			splitLine: {
+							lineStyle: {
+								color: 'rgb(23,41,87)',
+						        //type:'dashed'虚线
+								}
+								},
+            type: "value",
+        },
+        series: [
+            {
+                type: "line",
+				lineStyle:{
+					color:'rgb(0,112,255)'
+				},
+                data: [140,50,180,70],
+                smooth:true,
+                symbol:"none",
+				areaStyle: {
+				        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+				          {
+				            offset: 0,
+				            color: 'rgba(0,112,255,0.3)'
+				          },
+				          {
+				            offset: 1,
+				            color: 'rgba(13,34,83,1)'
+				          }
+				        ])
+				      }
+            },
+            {
+                type: "line",
+				lineStyle:{
+					color:'rgb(0,225,243)'
+				},
+                data: [80,130,10,125],
+                smooth:true,
+                symbol:"none",
+				areaStyle: {
+				        color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
+				          {
+				            offset: 0,
+				            color: 'rgba(0,225,243,0.3)'
+				          },
+				          {
+				            offset: 1,
+				            color: 'rgba(13,34,83,1)'
+				          }
+				        ])
+				      }
+            }
+        ]
+    }
+    // 渲染图标
+    demoChart10.setOption(option10)
+</script>
+</body>
+</html>
